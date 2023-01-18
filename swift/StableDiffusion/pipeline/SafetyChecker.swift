@@ -65,7 +65,7 @@ public struct SafetyChecker: ResourceManaging {
 
 //        let width = inputShape[2].intValue
 //        let height = inputShape[3].intValue
-        let width = 64
+        let width = 128
         let height = 64
 
         let resizedImage = try resizeToRGBA(image, width: width, height: height)
@@ -81,7 +81,7 @@ public struct SafetyChecker: ResourceManaging {
                 // No adjustment, use default threshold
                 adjustmentName : MLMultiArray(MLShapedArray<Float32>(scalars: [0], shape: [1])),
                 // Supplying dummy images to be filtered (will be ignored)
-                imagesNames    : MLMultiArray(shape:[1, 64, 64, 3], dataType: .float16)
+                imagesNames    : MLMultiArray(shape:[1, 128, 64, 3], dataType: .float16)
             ]
         ) else {
             throw SafetyCheckError.modelInputFailure
