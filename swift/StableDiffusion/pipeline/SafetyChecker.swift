@@ -67,6 +67,8 @@ public struct SafetyChecker: ResourceManaging {
 //        let height = inputShape[3].intValue
         let width = 128
         let height = 64
+        
+        print("*Safety Check* w:\(width), H:\(height)")
 
         let resizedImage = try resizeToRGBA(image, width: width, height: height)
 
@@ -100,8 +102,7 @@ public struct SafetyChecker: ResourceManaging {
         return !unsafe
     }
 
-    func resizeToRGBA(_ image: CGImage,
-                      width: Int, height: Int) throws -> CGImage {
+    func resizeToRGBA(_ image: CGImage, width: Int, height: Int) throws -> CGImage {
 
         guard let context = CGContext(
             data: nil,
@@ -133,6 +134,7 @@ public struct SafetyChecker: ResourceManaging {
         }
 
         // Drop the alpha channel, keeping RGB
+        print("*SafetyChecker getRGBPlanes* w:\(rgbaImage.width), H:\(rgbaImage.height)")
         let bufferI8x3 = PixelBufferI8x3(width: rgbaImage.width, height:rgbaImage.height)
         bufferI8x4.convert(to: bufferI8x3, channelOrdering: .RGBA)
 
@@ -143,6 +145,8 @@ public struct SafetyChecker: ResourceManaging {
     func normalizeToFloatShapedArray(_ bufferP8x3: PixelBufferP8x3) -> MLShapedArray<Float32> {
         let width = bufferP8x3.width
         let height = bufferP8x3.height
+        
+        print("*SafetyChecker normalizeToFloatShapedArray* w:\(width), H:\(height)")
 
         let means = [0.485, 0.456, 0.406] as [Float]
         let stds  = [0.229, 0.224, 0.225] as [Float]

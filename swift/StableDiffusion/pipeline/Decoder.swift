@@ -35,7 +35,7 @@ public struct Decoder: ResourceManaging {
     /// Batch decode latent samples into images
     ///
     ///  - Parameters:
-    ///    - latents: Batch of latent samples to decode
+    ///  - latents: Batch of latent samples to decode
     ///  - Returns: decoded images
     public func decode(_ latents: [MLShapedArray<Float32>]) throws -> [CGImage] {
 
@@ -83,10 +83,12 @@ public struct Decoder: ResourceManaging {
 
         // array is [N,C,H,W], where C==3
         let channelCount = array.shape[1]
-        assert(channelCount == 3,
-               "Decoding model output has \(channelCount) channels, expected 3")
+        assert(channelCount == 3, "Decoding model output has \(channelCount) channels, expected 3")
+        
         let height = array.shape[2]
         let width = array.shape[3]
+        
+        print("*Decoder* w:\(width), H:\(height)")
 
         // Normalize each channel into a float between 0 and 1.0
         let floatChannels = (0..<channelCount).map { i in
