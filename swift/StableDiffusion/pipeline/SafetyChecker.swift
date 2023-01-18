@@ -65,7 +65,7 @@ public struct SafetyChecker: ResourceManaging {
 
 //        let width = inputShape[2].intValue
 //        let height = inputShape[3].intValue
-        let width = 128
+        let width = 64
         let height = 64
         
         print("*Safety Check* w:\(width), H:\(height)")
