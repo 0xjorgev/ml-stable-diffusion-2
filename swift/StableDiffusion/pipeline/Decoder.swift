@@ -88,8 +88,8 @@ public struct Decoder: ResourceManaging {
 //        let height = array.shape[2]
 //        let width = array.shape[3]
         
-        let height = 64
-        let width = 64
+        let height = 128
+        let width = 128
         
         print("*Decoder* w:\(width), H:\(height)")
 
