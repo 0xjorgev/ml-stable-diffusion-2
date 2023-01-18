@@ -85,11 +85,11 @@ public struct Decoder: ResourceManaging {
         let channelCount = array.shape[1]
         assert(channelCount == 3, "Decoding model output has \(channelCount) channels, expected 3")
         
-//        let height = array.shape[2]
-//        let width = array.shape[3]
+        let height = array.shape[2]
+        let width = array.shape[3]
         
-        let height = 128
-        let width = 128
+//        let height = 128
+//        let width = 128
         
         print("*Decoder* w:\(width), H:\(height)")
 
